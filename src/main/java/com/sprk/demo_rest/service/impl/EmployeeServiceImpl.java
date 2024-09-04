@@ -1,17 +1,29 @@
 package com.sprk.demo_rest.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sprk.demo_rest.entity.Employee;
+import com.sprk.demo_rest.repository.EmployeeRepository;
 import com.sprk.demo_rest.service.EmployeeService;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Override
-    public Employee insertEmployee(Employee employee) {
+    // Dependency Injection
+    private final EmployeeRepository employeeRepository;
 
-        // Business Logic
+    @Autowired
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
+    @Override
+    @Transactional
+    public Employee insertEmployee(Employee employee) {
+        return employeeRepository.saveEmployee(employee);
     }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.sprk.demo_rest.entity.Employee;
 
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 
 @Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
@@ -14,7 +15,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     // Dependency Injection
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Autowired
     public EmployeeRepositoryImpl(EntityManager entityManager) {

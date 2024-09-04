@@ -17,7 +17,7 @@ public class EmployeeController {
 
     // Dependency Injection
     // @Autowired // Field Injection
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     @Autowired
     public EmployeeController(EmployeeService employeeService) {
@@ -30,7 +30,9 @@ public class EmployeeController {
     public Employee saveEmployee(@RequestBody Employee employee) {
 
         // Save Logic
-        return employee;
+        Employee savedEmployee = employeeService.insertEmployee(employee);
+
+        return savedEmployee;
     }
 
 }
