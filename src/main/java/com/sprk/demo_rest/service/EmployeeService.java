@@ -10,4 +10,6 @@ public interface EmployeeService {
 
     List<Employee> getEmployees();
 
+    Employee getEmployeeById(int empId);
+
 }
