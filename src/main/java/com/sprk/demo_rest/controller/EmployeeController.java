@@ -1,15 +1,14 @@
 package com.sprk.demo_rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.sprk.demo_rest.entity.Employee;
 import com.sprk.demo_rest.service.EmployeeService;
 
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -33,6 +32,12 @@ public class EmployeeController {
         Employee savedEmployee = employeeService.insertEmployee(employee);
 
         return savedEmployee;
+    }
+
+    @GetMapping("/all-employees")
+    public List<Employee> getAllEmployees() {
+
+        return employeeService.getEmployees();
     }
 
 }

@@ -9,6 +9,8 @@ import com.sprk.demo_rest.service.EmployeeService;
 
 import jakarta.transaction.Transactional;
 
+import java.util.List;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -24,6 +26,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     public Employee insertEmployee(Employee employee) {
         return employeeRepository.saveEmployee(employee);
+    }
+
+    @Override
+    public List<Employee> getEmployees() {
+        return employeeRepository.getAllEmployees();
     }
 
 }
