@@ -31,21 +31,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     }
 
-    @Override
-    public List<Employee> getAllEmployees() {
 
-        TypedQuery<Employee> query = entityManager.createQuery("from Employee", Employee.class);
-
-        List<Employee> allEmployees = query.getResultList();
-
-        return allEmployees;
-    }
-
-    @Override
-    public Employee findById(int eid) {
-        Employee employee = entityManager.find(Employee.class,eid);
-        return employee;
-    }
 
 
 }

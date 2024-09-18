@@ -37,22 +37,6 @@ public class EmployeeController {
         return savedEmployee;
     }
 
-    @GetMapping("/all-employees")
-    public List<Employee> getAllEmployees() {
 
-        return employeeService.getEmployees();
-    }
-
-    @GetMapping("/employee/{empId}")
-    public ResponseEntity<?> getEmployee(@PathVariable int empId) {
-
-        Employee employee = employeeService.getEmployeeById(empId);
-
-        if(employee == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee with id = "+empId+" not found");
-        }else{
-            return ResponseEntity.ok(employee);
-        }
-    }
 
 }

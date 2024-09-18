@@ -8,7 +8,5 @@ public interface EmployeeRepository {
     // Declaration
     Employee saveEmployee(Employee employee);
 
-    List<Employee> getAllEmployees();
 
-    Employee findById(int eid);
 }
