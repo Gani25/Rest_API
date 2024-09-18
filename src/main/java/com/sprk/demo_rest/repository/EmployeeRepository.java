@@ -9,4 +9,5 @@ public interface EmployeeRepository {
     Employee saveEmployee(Employee employee);
 
 
+    List<Employee> getAllEmployees();
 }

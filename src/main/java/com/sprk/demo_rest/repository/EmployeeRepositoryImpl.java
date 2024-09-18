@@ -31,7 +31,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     }
 
+    @Override
+    public List<Employee> getAllEmployees() {
+        TypedQuery<Employee> query = entityManager.createQuery("from Employee", Employee.class);
 
+        return query.getResultList();
+    }
 
 
 }

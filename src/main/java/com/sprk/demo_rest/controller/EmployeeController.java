@@ -37,6 +37,12 @@ public class EmployeeController {
         return savedEmployee;
     }
 
+    @GetMapping("/employees")
+    public List<Employee> getAllEmployees(){
+        return employeeService.findAll();
+    }
+
+
 
 
 }
