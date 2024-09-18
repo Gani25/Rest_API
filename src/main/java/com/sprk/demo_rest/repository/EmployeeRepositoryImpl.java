@@ -38,5 +38,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         return query.getResultList();
     }
 
+    @Override
+    public Employee findById(int empId) {
+        Employee employee = entityManager.find(Employee.class, empId);
+        return employee;
+    }
+
 
 }
