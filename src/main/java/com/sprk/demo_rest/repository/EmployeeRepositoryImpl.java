@@ -49,5 +49,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         entityManager.remove(employee);
     }
 
+    @Override
+    public Employee updateEmployee(Employee employee) {
+        return entityManager.merge(employee);
+    }
+
 
 }

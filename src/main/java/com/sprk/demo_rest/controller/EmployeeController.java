@@ -71,5 +71,21 @@ public class EmployeeController {
     }
 
 
+    @PatchMapping("/employee/{empId}")
+    public ResponseEntity<?> updateEmployee(@PathVariable int empId, @RequestBody Employee employee) {
+        Employee existingEmployee = employeeService.getEmployeeById(empId);
+        if(existingEmployee == null)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
+        }else{
+            employee.setEmpId(empId);
+            Employee updatedEmployee = employeeService.updateEmployee(employee);
+            return ResponseEntity.status(HttpStatus.OK).body(updatedEmployee);
+        }
+    }
+
+
+
+
 
 }

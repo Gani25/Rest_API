@@ -44,5 +44,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.removeEmployee(employee);
     }
 
+    @Override
+    @Transactional
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepository.updateEmployee(employee);
+    }
+
 
 }
