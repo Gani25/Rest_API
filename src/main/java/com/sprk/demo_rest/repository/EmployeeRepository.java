@@ -1,19 +1,12 @@
 package com.sprk.demo_rest.repository;
 
 import com.sprk.demo_rest.entity.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface EmployeeRepository {
-    // Declaration
-    Employee saveEmployee(Employee employee);
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-
-    List<Employee> getAllEmployees();
-
-    Employee findById(int empId);
-
-    void removeEmployee(Employee employee);
-
-    Employee updateEmployee(Employee employee);
 }
