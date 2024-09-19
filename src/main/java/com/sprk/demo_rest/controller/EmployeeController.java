@@ -37,7 +37,7 @@ public class EmployeeController {
         return savedEmployee;
     }
 
-    @GetMapping("/employees")
+    @GetMapping("/employee")
     public List<Employee> getAllEmployees(){
         return employeeService.findAll();
     }
@@ -53,6 +53,22 @@ public class EmployeeController {
         }
     }
 
+    @DeleteMapping("/employee")
+    public ResponseEntity<?> deleteEmployee(@RequestParam int empId) {
+
+        Employee employee = employeeService.getEmployeeById(empId);
+        if(employee == null)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee with empId = "+empId+ " not found");
+        }else{
+            employeeService.deleteEmployee(employee);
+
+            return ResponseEntity.status(HttpStatus.OK).body(employee);
+
+        }
+
+
+    }
 
 
 

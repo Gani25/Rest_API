@@ -12,4 +12,6 @@ public interface EmployeeRepository {
     List<Employee> getAllEmployees();
 
     Employee findById(int empId);
+
+    void removeEmployee(Employee employee);
 }
