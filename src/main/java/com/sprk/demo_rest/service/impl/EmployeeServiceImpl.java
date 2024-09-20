@@ -10,6 +10,7 @@ import com.sprk.demo_rest.service.EmployeeService;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -25,29 +26,36 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public Employee insertEmployee(Employee employee) {
-        return employeeRepository.saveEmployee(employee);
+
+        return employeeRepository.save(employee);
     }
 
     @Override
     public List<Employee> findAll() {
-        return employeeRepository.getAllEmployees();
+        return employeeRepository.findAll();
     }
 
     @Override
     public Employee getEmployeeById(int empId) {
-        return employeeRepository.findById(empId);
+
+        Optional<Employee> dbEmployee = employeeRepository.findById(empId);
+
+        if(dbEmployee.isPresent()) {
+            return dbEmployee.get();
+        }
+        return null;
     }
 
     @Override
     @Transactional
     public void deleteEmployee(Employee employee) {
-        employeeRepository.removeEmployee(employee);
+        employeeRepository.delete(employee);
     }
 
     @Override
     @Transactional
     public Employee updateEmployee(Employee employee) {
-        return employeeRepository.updateEmployee(employee);
+        return employeeRepository.save(employee);
     }
 
 
