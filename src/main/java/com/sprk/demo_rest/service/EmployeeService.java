@@ -15,4 +15,6 @@ public interface EmployeeService {
     void deleteEmployee(Employee employee);
 
     Employee updateEmployee(Employee employee);
+
+    Employee getEmployeeByPhoneNum(String phone);
 }

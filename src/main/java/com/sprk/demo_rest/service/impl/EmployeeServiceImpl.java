@@ -58,5 +58,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    @Override
+    public Employee getEmployeeByPhoneNum(String phone) {
+        Optional<Employee> dbEmployee = employeeRepository.findByPhone(phone);
+
+        if(dbEmployee.isPresent()) {
+            return dbEmployee.get();
+        }
+        return null;
+    }
+
 
 }

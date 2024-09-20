@@ -53,6 +53,18 @@ public class EmployeeController {
         }
     }
 
+//    FInd by Phone Number
+    @GetMapping("/employee-with-phone/{phone}")
+    public ResponseEntity<?> getEmployeeByPhone(@PathVariable String phone) {
+        Employee employee = employeeService.getEmployeeByPhoneNum(phone);
+        if(employee == null)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
+        }else{
+            return ResponseEntity.status(HttpStatus.OK).body(employee);
+        }
+    }
+
     @DeleteMapping("/employee")
     public ResponseEntity<?> deleteEmployee(@RequestParam int empId) {
 
